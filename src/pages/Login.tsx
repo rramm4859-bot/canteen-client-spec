@@ -87,11 +87,13 @@ const Login = () => {
           alt="College Canteen" 
           className="w-full h-64 lg:h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 to-primary/40 flex items-end lg:items-center p-8 lg:p-12">
-          <div className="text-primary-foreground">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">College Canteen</h1>
-            <p className="text-lg lg:text-xl opacity-95">
-              Delicious meals, easy ordering, and happy students
+        <div className="absolute inset-0 bg-gradient-to-t from-devil-red/90 via-devil-orange/70 to-transparent flex items-end lg:items-center p-8 lg:p-12">
+          <div className="text-white">
+            <h1 className="text-5xl lg:text-6xl font-bold mb-4 drop-shadow-lg">
+              Devil's Kitchen
+            </h1>
+            <p className="text-xl lg:text-2xl opacity-95 drop-shadow-md">
+              🔥 Wickedly delicious meals that satisfy your cravings
             </p>
           </div>
         </div>
@@ -169,7 +171,7 @@ const Login = () => {
 
               {!isSignUp && (
                 <p className="text-xs text-muted-foreground text-center mt-4">
-                  Demo credentials: XYZ College / demo
+                  Demo credentials: Devil's Kitchen / demo
                 </p>
               )}
             </form>

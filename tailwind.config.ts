@@ -62,6 +62,11 @@ export default {
           secondary: "hsl(var(--food-secondary))",
           accent: "hsl(var(--food-accent))",
         },
+        devil: {
+          red: "hsl(var(--devil-red))",
+          orange: "hsl(var(--devil-orange))",
+        },
+        spice: "hsl(var(--spice))",
         success: "hsl(var(--success))",
         warning: "hsl(var(--warning))",
       },

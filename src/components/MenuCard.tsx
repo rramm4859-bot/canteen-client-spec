@@ -10,6 +10,10 @@ import vegBiryani from '@/assets/veg-biryani.jpg';
 import chickenBurger from '@/assets/chicken-burger.jpg';
 import mangoJuice from '@/assets/mango-juice.jpg';
 import chocolateBrownie from '@/assets/chocolate-brownie.jpg';
+import masalaDosa from '@/assets/masala-dosa.jpg';
+import tandooriChicken from '@/assets/tandoori-chicken.jpg';
+import smoothieBowl from '@/assets/smoothie-bowl.jpg';
+import rainbowCake from '@/assets/rainbow-cake.jpg';
 
 interface MenuCardProps {
   item: MenuItem;
@@ -21,6 +25,10 @@ const imageMap: Record<string, string> = {
   'chicken-burger': chickenBurger,
   'mango-juice': mangoJuice,
   'chocolate-brownie': chocolateBrownie,
+  'masala-dosa': masalaDosa,
+  'tandoori-chicken': tandooriChicken,
+  'smoothie-bowl': smoothieBowl,
+  'rainbow-cake': rainbowCake,
 };
 
 const MenuCard = ({ item }: MenuCardProps) => {
@@ -96,7 +104,7 @@ const MenuCard = ({ item }: MenuCardProps) => {
           </div>
         )}
         <div className="absolute top-3 right-3">
-          <Badge className="bg-primary text-primary-foreground">
+          <Badge className="bg-gradient-to-r from-devil-orange to-devil-red text-white shadow-lg">
             ₹{item.price}
           </Badge>
         </div>

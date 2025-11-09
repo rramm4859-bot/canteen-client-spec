@@ -47,12 +47,20 @@ All colors MUST be HSL.
     --sidebar-border: 35 15% 88%;
     --sidebar-ring: 14 88% 55%;
     
-    /* Custom canteen colors */
+    /* Custom canteen colors - Vibrant & Professional */
     --food-primary: 14 88% 55%;
     --food-secondary: 174 48% 52%;
     --food-accent: 42 95% 65%;
     --success: 142 76% 36%;
     --warning: 38 92% 50%;
+    --devil-red: 0 85% 55%;
+    --devil-orange: 25 95% 53%;
+    --spice: 16 90% 48%;
+    
+    /* Gradients */
+    --gradient-fire: linear-gradient(135deg, hsl(0 85% 55%), hsl(25 95% 53%));
+    --gradient-spice: linear-gradient(120deg, hsl(16 90% 48%), hsl(14 88% 55%));
+    --gradient-fresh: linear-gradient(135deg, hsl(174 48% 52%), hsl(142 76% 36%));
   }
 
   .dark {

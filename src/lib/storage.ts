@@ -44,7 +44,7 @@ export const initializeDefaultData = () => {
       {
         studentId: 'S2025001',
         name: 'Anita Rao',
-        college: 'XYZ College',
+        college: "Devil's Kitchen",
         email: 'anita@example.com',
         year: '2nd Year',
         preferences: 'Vegetarian',
@@ -56,7 +56,7 @@ export const initializeDefaultData = () => {
   const colleges = getFromStorage<College[]>(KEYS.COLLEGES, []);
   if (colleges.length === 0) {
     saveToStorage(KEYS.COLLEGES, [
-      { collegeName: 'XYZ College', password: 'demo' },
+      { collegeName: "Devil's Kitchen", password: 'demo' },
     ]);
   }
 
@@ -82,6 +82,15 @@ export const initializeDefaultData = () => {
         available: true,
         description: 'Aromatic basmati rice with mixed vegetables and spices.',
       },
+      {
+        id: 'veg03',
+        name: 'Masala Dosa',
+        price: 60,
+        category: 'Vegetarian',
+        image: 'masala-dosa',
+        available: true,
+        description: 'Crispy dosa with spiced potato filling, served with sambar.',
+      },
     ]);
   }
 
@@ -96,6 +105,15 @@ export const initializeDefaultData = () => {
         image: 'chicken-burger',
         available: true,
         description: 'Juicy chicken patty with fresh vegetables.',
+      },
+      {
+        id: 'nonveg02',
+        name: 'Tandoori Chicken',
+        price: 150,
+        category: 'Non-Vegetarian',
+        image: 'tandoori-chicken',
+        available: true,
+        description: 'Spicy grilled chicken marinated in tandoori spices.',
       },
     ]);
   }
@@ -112,6 +130,15 @@ export const initializeDefaultData = () => {
         available: true,
         description: 'Freshly squeezed mango juice.',
       },
+      {
+        id: 'juice02',
+        name: 'Smoothie Bowl',
+        price: 80,
+        category: 'Juices',
+        image: 'smoothie-bowl',
+        available: true,
+        description: 'Refreshing strawberry smoothie bowl with toppings.',
+      },
     ]);
   }
 
@@ -124,9 +151,17 @@ export const initializeDefaultData = () => {
         price: 40,
         category: 'Desserts',
         image: 'chocolate-brownie',
-        available: false,
+        available: true,
         description: 'Rich chocolate brownie with chocolate sauce.',
-        unavailableNote: 'Out of stock (received tomorrow)',
+      },
+      {
+        id: 'des02',
+        name: 'Rainbow Cake',
+        price: 60,
+        category: 'Desserts',
+        image: 'rainbow-cake',
+        available: true,
+        description: 'Colorful layered cake slice, perfect for celebrations.',
       },
     ]);
   }

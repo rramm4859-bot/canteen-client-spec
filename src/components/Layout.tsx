@@ -51,10 +51,14 @@ const Layout = ({ children }: LayoutProps) => {
       <header className="sticky top-0 z-50 w-full border-b bg-card shadow-sm">
         <div className="container flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-2">
-            <div className="p-2 bg-primary/10 rounded-lg">
-              <UtensilsCrossed className="h-6 w-6 text-primary" />
+            <div className="p-2 bg-gradient-to-br from-devil-red to-devil-orange rounded-lg">
+              <UtensilsCrossed className="h-6 w-6 text-white" />
             </div>
-            <h1 className="text-xl font-bold">College Canteen</h1>
+            <div>
+              <h1 className="text-xl font-bold bg-gradient-to-r from-devil-red to-devil-orange bg-clip-text text-transparent">
+                Devil's Kitchen
+              </h1>
+            </div>
           </div>
           
           <div className="flex items-center gap-2">
@@ -88,8 +92,8 @@ const Layout = ({ children }: LayoutProps) => {
               <NavLink
                 key={link.to}
                 to={link.to}
-                className="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-accent whitespace-nowrap"
-                activeClassName="bg-primary text-primary-foreground hover:bg-primary"
+                className="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all hover:bg-accent whitespace-nowrap"
+                activeClassName="bg-gradient-to-r from-devil-red to-devil-orange text-white hover:from-devil-red hover:to-devil-orange shadow-md"
               >
                 <link.icon className="h-4 w-4" />
                 {link.label}
