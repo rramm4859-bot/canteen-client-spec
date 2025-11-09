@@ -13,6 +13,7 @@ import heroImage from '@/assets/canteen-hero.jpg';
 const Login = () => {
   const [collegeName, setCollegeName] = useState('');
   const [password, setPassword] = useState('');
+  const [isSignUp, setIsSignUp] = useState(false);
   const navigate = useNavigate();
 
   // Initialize default data on component mount
@@ -35,6 +36,46 @@ const Login = () => {
     } else {
       toast.error('Invalid college name or password');
     }
+  };
+
+  const handleSignUp = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!collegeName.trim() || !password.trim()) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
+    if (password.length < 4) {
+      toast.error('Password must be at least 4 characters');
+      return;
+    }
+
+    const colleges = getFromStorage<College[]>(KEYS.COLLEGES, []);
+    
+    // Check if college already exists
+    const existingCollege = colleges.find(
+      (c) => c.collegeName.toLowerCase() === collegeName.toLowerCase()
+    );
+
+    if (existingCollege) {
+      toast.error('This college name is already registered');
+      return;
+    }
+
+    // Create new college account
+    const newCollege: College = {
+      collegeName: collegeName.trim(),
+      password: password,
+    };
+
+    colleges.push(newCollege);
+    saveToStorage(KEYS.COLLEGES, colleges);
+    
+    // Auto login after signup
+    saveToStorage(KEYS.CURRENT_USER, newCollege.collegeName);
+    toast.success('Account created successfully!');
+    navigate('/dashboard');
   };
 
   return (
@@ -65,13 +106,17 @@ const Login = () => {
                 <UtensilsCrossed className="h-12 w-12 text-primary" />
               </div>
             </div>
-            <CardTitle className="text-2xl text-center">Welcome Back</CardTitle>
+            <CardTitle className="text-2xl text-center">
+              {isSignUp ? 'Create Account' : 'Welcome Back'}
+            </CardTitle>
             <CardDescription className="text-center">
-              Enter your college credentials to access the canteen system
+              {isSignUp
+                ? 'Register your college to access the canteen system'
+                : 'Enter your college credentials to access the canteen system'}
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleLogin} className="space-y-4">
+            <form onSubmit={isSignUp ? handleSignUp : handleLogin} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="collegeName">College Name</Label>
                 <Input
@@ -88,18 +133,45 @@ const Login = () => {
                 <Input
                   id="password"
                   type="password"
-                  placeholder="Enter password"
+                  placeholder={isSignUp ? "Create password (min 4 characters)" : "Enter password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>
               <Button type="submit" className="w-full">
-                Login
+                {isSignUp ? 'Sign Up' : 'Login'}
               </Button>
-              <p className="text-xs text-muted-foreground text-center mt-4">
-                Demo credentials: XYZ College / demo
-              </p>
+              
+              <div className="relative my-4">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-card px-2 text-muted-foreground">
+                    {isSignUp ? 'Already have an account?' : "Don't have an account?"}
+                  </span>
+                </div>
+              </div>
+
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full"
+                onClick={() => {
+                  setIsSignUp(!isSignUp);
+                  setCollegeName('');
+                  setPassword('');
+                }}
+              >
+                {isSignUp ? 'Sign In Instead' : 'Create New Account'}
+              </Button>
+
+              {!isSignUp && (
+                <p className="text-xs text-muted-foreground text-center mt-4">
+                  Demo credentials: XYZ College / demo
+                </p>
+              )}
             </form>
           </CardContent>
         </Card>
